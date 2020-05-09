@@ -1,0 +1,60 @@
+body {
+	font-family: Arial, "Times New Roman", Helvetica, sans-serif; 
+	font-size: .75em; 
+	border: double;
+	padding: 1em;
+	width: 52em;
+	/* background-color: #F8FFDF; */
+}
+
+#header {
+	font-size: 165%;
+	border: double;
+	padding-left: .75em;
+	padding-right: .75em;
+}
+
+#UMDGlobe {
+	float: right;
+}
+
+#header p { 
+	padding: .5em;
+	border: double;
+}
+
+.centeredElement {
+	text-align: center;
+}
+
+/***** Hypertext Links *****/
+a:link {
+	color: red; 
+	font-weight: bold;
+}
+
+a:visited {
+	color: gray;
+}
+
+a:hover {
+	color: blue;
+}
+
+a:active {
+	color: yellow;
+}
+
+h2 {
+	color: black;
+	text-decoration: underline;
+}
+
+strong {
+	color: #A62A2A; /* brown color */
+}
+
+
+ul {
+ 	color: black;
+}

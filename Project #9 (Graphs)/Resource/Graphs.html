@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://www.cs.umd.edu/class/fall2019/cmsc132/projects/Graphs/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Graphs</title>
+    <link rel="stylesheet" href="./Graphs_files/Graphs.css">
+</head>
+<body>
+
+<div id="contents">
+
+    <div id="header">
+        <p><img id="UMDGlobe" src="./Graphs_files/globe.png" width="73" height="73" alt="UMD Globe"><strong><a href="http://www.cs.umd.edu/">Department of Computer
+            Science</a></strong><br>
+            <strong><a href="http://www.cs.umd.edu/class/fall2019/cmsc132">CMSC132:</a></strong>
+            Fall 2019<br>
+            <strong>Project:</strong> Graphs<br>
+            <strong>Due Date:</strong> Thu, Dec 5<br>
+        </p>
+    </div>
+
+    <h2>Overview</h2>
+
+    <p>For this project you will implement the Breadth-First Search, Depth-First
+        Search and Dijkstra's algorithms. Your project score will be based on submit
+        server results. For this project you are not required to write student tests,
+        but you are encourage to do so.
+    </p>
+
+    <h2>Objectives</h2>
+    <ul>
+        <li>Practice implementation of graphs.</li>
+        <li>Implement Breadth-First Search (BFS) Traversal.</li>
+        <li>Implement Depth-First Search (DFS) Traversal.</li>
+        <li>Implement Dijkstra's algorithm for shortest path computation.</li>
+    </ul>
+
+    <h2>Grading</h2>
+    <ul>
+        <li>(100%) Tests
+            <ul>
+                <li>(35%) Public Tests</li>
+                <li>(65%) Release Tests</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Clarifications</h2>
+
+    <h2>Code Distribution</h2>
+
+    <p>The code distribution for the project
+        can be found at <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/zipFiles/Graphs.zip">Graphs.zip</a>.
+        The code distribution provides you with the following:
+    </p>
+    <ul>
+        <li>A package named <b>graphs</b> → Package where the class you need
+            to implement can be found. Feel free to add any other classes you understand
+            are necessary, but make sure you place them in the graphs package. Notice
+            that you are not required to add any additional classes (i.e., you will NOT
+            lose credit by implementing everything in the Graph class).
+        </li>
+        <li>A package named <b>tests </b> → Includes the public tests
+            (PublicTests.java).
+        </li>
+    </ul>
+
+    <h2>Specifications</h2>
+
+    <p>This project has two main tasks: Implementing a graph representation and
+        implementing the BFS/DFS/Dijkstra's algorithms. Notice that the Graph class
+        is a generic class whose type parameter represents the elements of the graph
+        we are defining (e.g., Graph&lt;Student&gt;, Graph&lt;Double&gt;, etc.).
+        In order to represent the adjacency properties and the graph data we will
+        use the following maps:
+    </p>
+    <pre>HashMap&lt;String, HashMap&lt;String, Integer&gt;&gt; adjacencyMap;
+HashMap&lt;String, E&gt; dataMap;
+</pre>
+
+
+    <p>The actual methods you need to implement are described at <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/Graphs/doc/index.html">javadoc</a>. You will find in the graphs package an
+        interface named <strong>CallBack</strong>. A class implementing this interface
+        represents a class that will process a vertex. An example of such a class is
+        <b>PrintCallBack </b> (which you will find in the graph package). This class
+        is used to generate the string that represents the path we follow when
+        performing a breadth-first search or a depth-first search. Each time we reach
+        a vertex, the implementation of DFS and BFS is expected to call the
+        <b>processVertex </b> method to apply whatever processing needs to be done to
+        the vertex. We have implemented <b>PrintCallBack</b> for you (don't modify
+        it).</p>
+
+    <h2>Requirements</h2>
+    <ul>
+
+        <li>
+            The method getCost returns the cost of the directed edge that exist between startVertex and endVertex.
+            You can assume that endVertex is adjacent to startVertex. Notice this method is NOT computing the cost
+            between any two vertices. For this method ignore the @throws IllegalArgumentException information provided
+            in the javadoc.
+        </li>
+
+        <li>
+            If your doDepthFirstSearch and doBreadthFirstSearch methods work in Eclipse, but not in the submit server,
+            your problem might be that you are defining the callback parameter as PrintCallBack
+            instead of Callback. The submit server expects Callback.
+        </li>
+
+        <li><b>Do not implement DFS using a recursive approach; implement DFS using
+            an explicit stack as described in lecture.</b>
+        </li>
+
+        <li><b>
+            If no path is found while executing Dijkstra's algorithm, the ArrayList representing
+            the path will have the entry "None". The doDijkstras method will return -1
+            in this case.</b>
+        </li>
+
+        <li>Verify that your project passes the submit server tests (<a href="https://submit.cs.umd.edu/fall2019/">Submit Server</a>). Those
+            are the results we use to compute your grade.
+        </li>
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/studenttests/">Student Tests</a>
+            for information regarding the implementation of student tests for this
+            project.
+        </li>
+
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/javastyleguide/">Style Guidelines</a> for
+            information
+            regarding style.
+        </li>
+
+        <li>Notice you will receive points for release tests even
+            if you don't release test your project (e.g., you ran out of tokens.)
+        </li>
+
+        <li><b>Process adjacent vertices in alphabetical order.</b><strong>
+            This means that when processing a node you will add adjacent elements
+            to a stack or queue by selecting adjacent nodes in alphabetical order.
+            It does not mean the DFS or BFS result will show the nodes in alphabetical
+            order. For example, if node B has nodes E and D as adjacents, we will
+            add D to the stack/queue first, followed by E.
+        </strong>
+        </li>
+    </ul>
+    <h2>Other</h2>
+    <ul>
+       <li>Style will not be graded for this project.
+           Your grade will be based on the submit server results.
+       </li>
+        <li>For this project it could be the case that you pass your tests in
+        Eclipse and not in the submit server due to some class definition.  Make
+        sure you submit early and often so you can verify your project works
+        in the submit server.  No extensions will be granted because you did not
+        check your project results in the submit server.</li>
+        <li>
+            You can actually implement the project without using a particular maximum.
+            In case Integer.MAX_VALUE is not working for you, you can assume an edge cost will not exceed 10000.
+        </li>
+        <li>Adding private methods is fine.</li>
+        <li>
+            Do you know you can make a TreeMap out of a HashMap?. You can have the
+            efficiency of HashMaps, but when you need to process data in sorted
+            order you can turn a HashMap into a TreeMap by using the TreeMap constructor
+            (e.g., new TreeMap(myHashMap)). This hint has been brought to you by pepsi.
+        </li>
+
+        <li>
+            When multiple nodes have the same cost choosing any one is fine.
+        </li>
+
+        <li>
+            You can use classes we have gone over in class
+            (TreeSet, PriorityQueue, cmsc132SuperHashSet, etc.).
+        </li>
+    </ul>
+
+</div>
+<!-- Footer Section -->
+
+<div id="footer">
+
+    <h2>Academic Integrity</h2>
+
+    <p>Please make sure you read the academic integrity section of the syllabus so
+        you understand what is permissible in our programming projects. We want to
+        remind you that we check your project against other students' projects and any
+        case of academic dishonesty will be referred to the <a href="https://www.studentconduct.umd.edu/">Office of Student Conduct</a>. </p>
+
+    <p>
+        <a href="https://www.umd.edu/web-accessibility/">Web Accessibility</a>
+
+    </p>
+
+
+</div>
+
+
+<div class="xl-chrome-ext-bar" id="xl_chrome_ext_{4DB361DE-01F7-4376-B494-639E489D19ED}" style="display: none;">
+      <div class="xl-chrome-ext-bar__logo"></div>
+
+      <a id="xl_chrome_ext_download" href="javascript:;" class="xl-chrome-ext-bar__option">下载视频</a>
+      <a id="xl_chrome_ext_close" href="javascript:;" class="xl-chrome-ext-bar__close"></a>
+    </div></body></html>

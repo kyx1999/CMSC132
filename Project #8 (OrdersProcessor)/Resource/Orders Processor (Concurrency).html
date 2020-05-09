@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Orders Processor (Concurrency)</title>
+    <link rel="stylesheet" href="./Orders Processor (Concurrency)_files/OrdersProcessor.css">
+</head>
+
+<body>
+
+<div id="contents">
+
+    <div id="header">
+        <p><img id="UMDGlobe" src="./Orders Processor (Concurrency)_files/globe.png" width="73" height="73" alt="UMD Globe"><strong><a href="http://www.cs.umd.edu/">Department of Computer
+            Science</a></strong><br>
+            <strong><a href="http://www.cs.umd.edu/class/fall2019/cmsc132">CMSC132:</a></strong>
+            Fall 2019<br>
+            <strong>Project:</strong> Orders Processor (Concurrency) <br>
+            <strong>Due Date:</strong> Thursday, Nov 21, 11:30pm<br>
+        </p>
+    </div>
+
+    <h2>Overview</h2>
+
+    <p>For this project you will implement a program that processes files that
+        represent purchase orders. The program can complete the processing by using
+        a single thread or multiple threads.  <strong>Before you post a question in Piazza regarding
+        the project, make sure you carefully read the Requirements section of this description. It
+            addresses typical questions students have about this project.</strong>
+        Remember that we take academic integrity matters seriously.  You must implement
+        this project by yourself.
+    </p>
+
+    <p>The code distribution for the project
+        can be found at <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/zipFiles/OrdersProcessor.zip">OrdersProcessor.zip</a>.
+    </p>
+
+    <h2>Objectives</h2>
+    <p>
+        Practice the design and implementation of concurrent systems.
+    </p>
+
+    <h2>Grading</h2>
+    <ul>
+        <li>(58%) Public Tests</li>
+        <li>(12%) Secret Tests</li>
+        <li>(10%) Synchronization requirement (avoiding data races)</li>
+        <li>(10%) Style (avoiding code duplication, indentation, good variable names)</li>
+        <li>(10%) Report</li>
+    </ul>
+
+    <h2>Clarifications</h2>
+
+    <h2>Code Distribution</h2>
+
+    <p>The project's code distribution has the following files/folders:
+    </p>
+    <ul>
+        <li>
+            example1.txt → A sample order.
+        </li>
+
+        <li>
+            example2.txt → A sample order.
+        </li>
+
+        <li>
+            example3.txt → A sample order.
+        </li>
+
+        <li>
+            itemsData.txt → Information about the items that can be purchased.
+        </li>
+
+        <li>
+            resultsExample.txt → Results of processing the above example1.txt,
+            example2.txt, and example3.txt orders.
+        </li>
+
+        <li>
+            processor package → This is where all the files associated with
+            your implementation will reside.
+        </li>
+
+        <li>
+            report package → This is where the Report.doc file can be found.
+            Remember to refresh your project after editing this file (or overwriting it).
+        </li>
+    </ul>
+    <h2>Specifications</h2>
+
+    <h3>Processing of Orders (Files)</h3>
+    <p>
+        Your program will process a set of files (e.g., <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/example1.txt">example1.txt</a>)
+        each representing a purchase order. Each file lists the items bought and the date
+        of purchase. The possible items that can be purchased (along with the item's price)
+        can be found in a item's data file (e.g., <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/itemsData.txt">itemsData.txt</a>).
+        The program you need to write will generate a summary for each order (file). The summary includes
+        the client id and a <strong>sorted list (by item's name)</strong> of each item bought. The list will
+        include the item's name, the cost per item, the quantity of items bought, and the total
+        cost associated with the item's purchase. After the sorted list, an order's total
+        will be displayed. See the <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/resultsExample.txt">resultsExample.txt</a> file
+        for an example of the data format.
+    </p>
+
+    <p>
+        In addition to a report for each order, the program will generate a summary of
+        all orders. The summary will display a sorted list (by item's name) providing
+        information about the total number of items sold, and total revenue
+        (see <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/resultsExample.txt">resultsExample.txt</a>).
+    </p>
+
+    <h3>Threaded Processing</h3>
+    <p>
+        Your program will allow users to process all the orders using a single thread
+        or one thread per order (file). For simplicity, all the orders will use the
+        same base filename (e.g., <strong>example</strong> in the files above). The user
+        will provide a filename for the results.
+    </p>
+
+    <p>
+        In order to see the advantages of threading, your program needs to print (to
+        standard output) the time (in msec) it took to process orders. You can
+        compute the time as follows:
+    </p>
+    <pre>long startTime = System.currentTimeMillis();
+/* TASK YOU WANT TO TIME */
+long endTime = System.currentTimeMillis();
+System.out.println("Processing time (msec): " + (endTime - startTime));
+</pre>
+
+    <h3>Driver</h3>
+    <p>
+        Your are free to define any number of classes/interfaces you understand you
+        need, however, you need to provide a class called <strong>OrdersProcessor</strong>
+        in the processor package. This class can have as many methods as you want, but it
+        must have a main method that allow us to configure/run the processing of orders.
+    </p>
+
+    <p>
+        Your program will ask users how to configure a particular processing of orders by
+        using standard input and output. The following represents a run of the OrdersProcessor
+        main method that computed the results you see in
+        <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/resultsExample.txt">resultsExample.txt</a>
+        (code in italics represents user's input).
+    </p>
+
+    <pre>Enter item's data file name:  <strong><em>itemsData.txt</em></strong>    
+Enter 'y' for multiple threads, any other character otherwise: <strong><em>y</em></strong>
+Enter number of orders to process: <strong><em>3</em></strong>
+Enter order's base filename: <strong><em>example</em></strong>
+Enter result's filename: <strong><em>resultsExample.txt</em></strong>
+Reading order for client with id: 1003
+Reading order for client with id: 1001
+Reading order for client with id: 1002
+Processing time (msec): 51
+Results can be found in the file: resultsExample.txt
+</pre>
+
+    <h3>Report</h3>
+    <p>
+        Using the <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/data.zip">data.zip</a> file, create a table that
+        illustrates the time it takes to process data using a single thread and
+        multiple threads. For example, the table can have three columns where
+        the first indicates the number of orders, the second the time it took
+        using a single thread, and the third the time is took using multiple threads.
+        Provide a brief explanation (no more than a paragraph) of your results.
+        Put your table and explanation in a file named <strong>Report.doc</strong>
+        you will find in the report package.
+    </p>
+
+    <h2>Requirements</h2>
+    <ul>
+
+        <li>
+            You need to define a map/ArrayList that is shared and modified by all threads. How you use the
+            map is up to you.
+        </li>
+
+        <li>
+            Each order has an item name, followed by the date (e.g. 6/13) the item was
+            ordered. That date is not used in your program.
+        </li>
+
+        <li>
+            For the multiple threads option, one thread will be created for
+            each order (file) to be processed.
+        </li>
+
+        <li>
+            You will start the timing process immediately after reading the
+            name of the results file and will stop the timing process before
+            printing the message indicating where results can be found. Make sure
+            you close the file output stream for the results file before you stop
+            the timing process.
+        </li>
+
+        <li>
+            Your program will print (to standard output, NOT to the results file)
+            the message "Reading order for client with id: " followed by the client id,
+            before reading a particular order's file.
+        </li>
+
+        <li>
+            Notice that the reports appear sorted by client id, but the processing of
+            each order (when using multiple threads) is up to the Java scheduler.
+        </li>
+
+        <li>
+            The summary for all the orders only includes items that have been bought.
+        </li>
+
+        <li>
+            <strong>You may not use classes that are automatically synchronized (e.g., StringBuffer, Vector).
+            </strong>.  Instead of StringBuffer, use StringBuilder that has an API compatible with
+            StringBuffer.
+        </li>
+
+        <li>
+            Synchronizing individual methods is fine (in this case you many not need
+            to use an explicit lock object), however, be careful as you don't want to limit
+            concurrency while trying to avoid data races. Instead of defining
+            a method as synchronized, you should surround the critical section with a lock.
+        </li>
+
+        <li>
+            What we are expecting for the synchronization part of this project, is that any
+            object (e.g., map, set, whatever you use) that is being shared is not
+            associated with a data race.
+        </li>
+
+        <li>
+            <strong>IMPORTANT: Before uploading your project to the submit server,
+            remove all large data order files (.txt). Usually these are files you
+            utilized for performance experiments. If you have student tests that rely
+                on .txt files, keep those text files small. If you submission
+                fails, try removing extra test files.</strong>
+        </li>
+
+        <li>
+            Feel free to define as many classes and/or interfaces you understand are necessary.
+        </li>
+
+        <li>
+            Your program must be able to process any number of orders (not just 3).
+        </li>
+
+        <li>
+            Do not use static variables; do not use static objects. We want
+            to avoid the JUnit problems discussed in class. Notice that using
+            static methods is OK.
+        </li>
+
+        <li>You are not required to write student tests for this project, but you are
+            strongly encourage to do so. Notice that you can write student tests where main is
+            executed (by calling OrdersProcessor.main(null);)
+            after you have redirected input. The file
+            <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/TestingSupport.java">TestingSupport.java</a>
+            has tools for writing tests (including input/output redirection). Notice
+            you don't need to use these tools.
+        </li>
+
+        <li>
+            Your code must be efficient and you must avoid code duplication.
+        </li>
+
+        <li>
+            We plan to modify the contents of the item's data file while
+            grading your program. That means we plan to use items other than
+            the ones you see in the sample file.
+        </li>
+
+        <li>
+            You can assume all order files will be placed in the same folder where
+            example1.txt, example2.txt, etc. reside.
+        </li>
+
+        <li>
+            The report for each client must be sorted by client id.
+        </li>
+
+        <li>
+            You can assume that the specified output file (e.g.,
+            <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/resultsExample.txt">resultsExample.txt</a>) will
+            be overwritten (no appending of results) if the same name is used several times.
+        </li>
+
+        <li>
+            We will use different names for output files (not just resultsExample.txt).
+        </li>
+
+        <li>
+            There could be items in the items' data file that no one buys.
+        </li>
+
+        <li>
+            You can assume orders will only have items present in the items' data file (no
+            invalid data).
+        </li>
+
+        <li>
+            The file names will always start at 1 up to including the number of orders.
+        </li>
+
+        <li>
+            Remember that we are planning to use base file names different than order or example.
+            For example, we can provide files names myNewOrder1.txt, myNewOrder2.txt, etc.
+        </li>
+
+        <li>
+            To compare files in Eclipse, you can right-click on a file and select "Compare With".
+        </li>
+
+        <li>
+            Remember to follow exactly (except for spaces) the format associated with
+            the file <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/sampleFiles/resultsExample.txt">resultsExample.txt</a>.
+        </li>
+
+        <li>
+            To print currency use <strong>NumberFormat.getCurrencyInstance().format(AMOUNT_HERE)</strong>.
+        </li>
+
+        <li>
+            Remember to refresh your project after editing/copying the Report.doc file.
+        </li>
+
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/javastyleguide/">Style
+            Guidelines</a> for information
+            regarding style.
+        </li>
+        <li>
+            The <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OrdersProcessor/DataFilesGenerator.java">DataFilesGenerator.java</a> can be used to
+            generate additional data sets.
+        </li>
+        <li>
+            We don't have any specific time requirements.  There are many factors that can affect
+            the performance (computer, what programs computer is running, etc.).  We expect
+            the multi-threaded version to be faster, but we have seen that the single
+            threaded version can be faster for some data sets.  Students will not
+            lose credit for this as long they have not minimized concurrency by using
+            locks incorrectly.   Trying a large data set with the data generator we posted could
+            help see the advantages of multi-threaded version.
+        </li>
+
+        <li>
+            For the single thread approach main count as a thread and you don't need to
+            create any additional threads.
+        </li>
+    </ul>
+
+</div>
+<!-- Footer Section -->
+
+<div id="footer">
+    <h2>Submission</h2>
+
+    <p>Submit as usual.
+    </p>
+
+
+    <h2>Academic Integrity</h2>
+
+    <p>Please make sure you read the academic integrity section of the syllabus so
+        you understand what is permissible in our programming projects. We want to
+        remind you that we check your project against other students' projects and any
+        case of academic dishonesty will be referred to the <a href="https://www.studentconduct.umd.edu/">Office of Student Conduct</a>.
+    </p>
+    <p>
+        <a href="https://www.umd.edu/web-accessibility/">Web Accessibility</a>
+
+    </p>
+</div>
+
+
+</body></html>

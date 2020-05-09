@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OnlineTest/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Online Test System (Design)</title>
+    <link rel="stylesheet" href="./Online Test System (Design)_files/OnlineTest.css">
+</head>
+
+<body>
+
+<div id="contents">
+
+    <div id="header">
+        <p><img id="UMDGlobe" src="./Online Test System (Design)_files/globe.png" width="73" height="73" alt="UMD Globe"><strong><a href="http://www.cs.umd.edu/">Department of Computer
+            Science</a></strong><br>
+            <strong><a href="http://www.cs.umd.edu/class/fall2019/cmsc132/">CMSC132:</a></strong>
+            Fall 2019<br>
+            <strong>Project:</strong> Online Test System (Design)<br>
+            <strong>Due Date:</strong> Friday, Nov 1, 11:30pm<br>
+        </p>
+    </div>
+
+    <h2>Overview</h2>
+
+    <p>For this project you will implement the data manager of an online test system. The system allows
+        for the definition of exams with three possible kinds of questions: true and false,
+        multiple choice and fill-in-the-blanks questions. The system will grade submitted exams
+        and generate some statistical information.
+    </p>
+
+    <h2>Objectives</h2>
+    <ul>
+        <li>Practice the design and implementation of object-oriented software
+            systems.
+        </li>
+    </ul>
+
+    <h2>Grading</h2>
+    <ul>
+        <li>(45%) Design</li>
+        <li>(40%) Public Tests Only (No release/secret tests)</li>
+        <li>(15%) Command Line Interpreter</li>
+    </ul>
+
+    <h2>Clarifications</h2>
+
+    <h2>Code Distribution</h2>
+
+    <p>The project's code distribution is available at
+        <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/zipFiles/OnlineTest.zip">OnlineTest.zip</a>.
+        The code distribution provides you with the following:
+    </p>
+
+    <ul>
+        <li>A package named <b>cmdLineInterpreter</b> - Package where classe(s)
+            that implement a simple command line interpreter for the System Manager will
+            reside. We should be able to run your interpreter by running the main
+            method of the <b>Interpreter</b> class. Additional details about this interpreter
+            are provided below.
+        </li><li>A package named <b>onlineTest</b> - Package where all the classes
+            representing your design will be implemented.
+        </li>
+        <li>A package named <b>tests </b>- Includes the public tests
+            (<b>PublicTests.java</b>). Notice that you are not required to write student
+            tests for this project; however, we recommend you do so.
+        </li>
+    </ul>
+
+    <h2>Specifications</h2>
+
+    <h3>Data Manager</h3>
+
+    <p>For this project you will implement the data manager (model component of
+        the MVC paradigm) for an online test system. The system allows
+        for the definition of exams with three possible kinds of questions: true and false,
+        multiple choice and fill-in-the-blanks questions. The system will grade submitted exams
+        and generate some statistical information. </p>
+
+    <p>The functionality of the system you will implement is represented by the
+        interface <strong>Manager</strong>. The interface
+        represents the methods available to anyone trying to make use of the system.
+        The javadoc documentation for the project can be found at <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/OnlineTest/doc/index.html">javadoc</a>. Your task for the design part of the
+        project is to come up with a set of classes and interfaces that together
+        provide the functionality defined by the Manager interface.</p>
+
+    <p>Access to the data manager functionality will be possible through a class
+        named SystemManager that you must define. This class implements the
+        Manager interface. Feel free to add any instance variables and
+        private methods to this class. Public tests create an instance of
+        the SystemManager class in order to test your system. </p>
+
+    <p>Your design should make use of object-oriented design concepts (e.g.,
+        generalization, specification, etc.) discussed in class. Keep in mind that
+        having a large number of classes does not guarantee a better design grade.
+        If you only implement the SystemManager class you will lose all the points
+        associated with the design component of this project (even if the class
+        provides all the expected functionality). We encourage you to discuss
+        your design with your instructor or TA to make sure your design is a valid one.
+    </p>
+
+    <h2>Requirements</h2>
+    <ul>
+        <li>An exam can have different types of questions (true/false, fill in the blanks, etc.)
+        </li>
+        <li>
+            We expect to see at least five classes/interfaces (SystemManager and four
+            additional classes/interfaces) in your design. For this project, do not use
+            anonymous classes (except for iterators). Notice that classes
+            used for iterators do not count towards the minimum of five classes.
+            In addition, classes associated with the command line interpreter are
+            not included in this count.
+        </li>
+
+        <li>You can use any of the data structures discussed in class (e.g., arrays,
+            arraylists, maps, sets, etc.) to keep track of your data.
+        </li>
+
+        <li>
+            Your command line interpreter will provide access to a reduced set
+            of the functionality of your system. You need to define a command
+            line interpreter that allow us to:
+            <br>
+            <br>
+            <ul>
+                <li>Add a student</li>
+                <li>Add an exam</li>
+                <li>Add a true/false question</li>
+                <li>Answer a true/false question</li>
+                <li>Get the exam score for a student</li>
+            </ul>
+            <br>
+            <strong>Your command line interpreter will display a menu with
+                the above options. Your interpreter should rely on standard input/output
+                (not GUI/JavaFX).</strong>
+            <br><br>
+        </li>
+
+        <li>Verify that your project passes the submit server tests (<a href="https://submit.cs.umd.edu/fall2019/">https://submit.cs.umd.edu/</a>)
+        </li>
+        <li>
+            Use the following approach to compute average:
+            ((examScore1/totalScoreExam1) + (examScore2/totalScoreExam2) + ...)/totalNumberOfExams
+        </li>
+
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/studenttests/">Student Tests</a>
+            for information regarding the implementation of student tests for this
+            project.
+        </li>
+
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/javastyleguide/">Style Guidelines</a> for
+            information
+            regarding style.
+        </li>
+
+        <li>
+            If you pass the public tests you should be OK in terms of implementing the
+            expected functionality. There are details of the functionality that can be
+            implemented in different ways.
+        </li>
+
+        <li>
+            The provided Manager interface does not count towards five classes/interfaces needed.
+        </li>
+
+        <li>
+            You will not be penalize if your code is not efficient, but try
+            to make it as efficient as possible.
+        </li>
+
+
+    </ul>
+
+</div>
+<!-- Footer Section -->
+
+<div id="footer">
+    <h2>Submission</h2>
+
+    <p>Submit your implementation using the Eclipse "Submit Project" option
+        (available by right clicking on the project folder).</p>
+
+    <h2>Academic Integrity</h2>
+
+    <p>Please make sure you read the academic integrity section of the syllabus so
+        you understand what is permissible in our programming projects. We want to
+        remind you that we check your project against other students' projects and any
+        case of academic dishonesty will be referred to the <a href="https://www.studentconduct.umd.edu/">Office of Student Conduct</a>.
+    </p>
+</div>
+
+<div class="container-fluid">
+    <a href="https://www.umd.edu/web-accessibility/">Web Accessibility</a>
+</div>
+
+
+
+<div class="xl-chrome-ext-bar" id="xl_chrome_ext_{4DB361DE-01F7-4376-B494-639E489D19ED}" style="display: none;">
+      <div class="xl-chrome-ext-bar__logo"></div>
+
+      <a id="xl_chrome_ext_download" href="javascript:;" class="xl-chrome-ext-bar__option">下载视频</a>
+      <a id="xl_chrome_ext_close" href="javascript:;" class="xl-chrome-ext-bar__close"></a>
+    </div></body></html>

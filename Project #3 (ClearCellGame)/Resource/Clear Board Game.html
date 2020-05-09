@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)http://www.cs.umd.edu/class/fall2019/cmsc132/projects/ClearCellGame/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Clear Board Game</title>
+    <link rel="stylesheet" href="./Clear Board Game_files/ClearCellGame.css">
+</head>
+
+<body>
+
+<div id="contents">
+
+    <div id="header">
+        <p><a href="http://www.cs.umd.edu/"><img id="UMDGlobe" src="./Clear Board Game_files/globe.png" width="73" height="73" alt="UMD Globe"></a>
+            <a href="http://www.cs.umd.edu/">Department of Computer Science</a><br>
+            <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/">CMSC132: Fall 2019</a><br>
+            <strong>Project:</strong> Clear Cell Game<br>
+            <strong>Due Date:</strong> Thursday, Sep 26, 11:30 pm<br>
+            <strong>Assignment Type: </strong>Closed
+        </p>
+    </div>
+
+    <h2>Overview</h2>
+
+    <p>For this project you will implement code for a game named <strong>clear
+        cell game</strong>. The game's goal is to maximize the number of cleared
+        cells in a colored board. This is a closed project.</p>
+
+    <p>We will provide the graphical user interface (GUI) and you need to develop
+        the code that implements the rules of the game. A video illustrating the
+        collapse game can be found at <a href="https://umd.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=838c6e27-f898-4856-9475-aacb0108fe99">Game Video</a>. Keep
+        in mind that you can finish this project without ever playing the game through
+        the GUI. Also, keep in mind that you should not debug your code using the GUI
+        (student tests are preferable).</p>
+
+    <p><strong>
+        We want to remind you of the academic integrity rules associated with the course
+        as a project similar to this one has been done in the past. Implement your own
+        code and if you are having difficulties with the project, see us during office hours.
+
+    </strong>
+    </p>
+
+    <h2>Objectives</h2>
+
+    <p>This project will allow you practice two-dimensional arrays, abstract
+        classes, and test development. </p>
+
+    <h2>Grading</h2>
+    <ul>
+        <li>(20%) Public Tests</li>
+        <li>(30%) Release Tests</li>
+        <li><strong>(40%) Secret Tests </strong></li>
+        <li>(10%) Style</li>
+    </ul>
+
+    <h2>Clarifications</h2>
+
+    <h2>Code Distribution</h2>
+
+    <p>
+        The project's code distribution is available at
+        <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/zipFiles/ClearCellGame.zip">ClearCellGame.zip</a>
+        The code distribution provides you with the following:
+    </p>
+
+    <ul>
+        <li><strong>gui package </strong> → Represents the graphical user
+            interface for the game. Executing the main method of this class will
+            allow you to play the game.
+        </li>
+        <li><strong>model package </strong> → Includes the classes you need to
+            implement.
+        </li>
+        <li><strong>tests package </strong> → Includes the public test
+            model.
+        </li>
+        <li><strong>Text files </strong> → Represent the expected output for
+            public tests.
+        </li>
+    </ul>
+
+    <h2>Specifications</h2>
+
+    <p>You are expected to implement methods for the Game and
+        ClearCellGame classes. The other classes have been provided and you should
+        not modify them. You should familiarize yourself with the BoardCell class.
+        The javadoc describing what you must implement can be found at
+        <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/ClearCellGame/doc/index.html">Project Javadoc</a>.</p>
+
+    <p>Notice you are not required to write student tests for credit, however,
+        if you need assistance during office hours you need to bring student tests
+        that illustrates the problem you are experiencing. Also, keep in mind the
+        percentage associated with secret tests is high, so you need to test your
+        project thoroughly.</p>
+
+    <h2>Requirements</h2>
+    <ul>
+        <li>Clearing one cell represents one point.</li>
+        <li><strong>Notice that when a cell is clicked, one or more rows might be cleared as a result.
+            Your program must collapsed all those rows.</strong></li>
+        <li>While checking the cells surrounding a particular one, do not use out of bounds
+            exceptions to implement the expected processing. You should verify whether a particular
+            cell access is legal or not before attempting such access.
+        </li>
+        <li>
+            Additional information about the game clearing rules can be
+            found at <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/ClearCellGame/ClearingRules.html">clearing rules</a>. If you have any
+            doubts about the clearing rules, please see us during office hours
+            or in lecture.
+        </li>
+        <li>You may not use ArrayList for this project.</li>
+        <li>You may not add any classes, but feel free to add any instance variables
+            and private methods you understand are necessary.
+        </li>
+        <li>
+            You will not be graded in terms of code coverage information provided by the
+            submit server, although having a high code coverage is highly recommended (and
+            encouraged).
+        </li>
+        <li><strong>IMPORTANT</strong> → If you have a problem with your code
+            and need assistance during office hours, you need to have a student
+            test(s) that illustrates the problem you are experiencing.
+        </li>
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/studenttests/">Student Tests</a>
+            for information regarding the implementation of student tests for this
+            project.
+        </li>
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/javastyleguide/">Style Guidelines</a> for
+            information
+            regarding style.
+        </li>
+
+        <li>We cannot provide any information regarding release nor secret tests.
+            Once your project has been graded, you can see a TA if you would
+            like to find out why you failed a release or secret test.
+        </li>
+
+        <li> The Random object parameter of the ClearCellGame constructor is a
+            reference you will store as an instance variable of the
+            ClearCellGame class. This object will be used while calling
+            the getNonEmptyRandomBoardCell method of the BoardCell class.
+            This is the only use you will have for this object (do not
+            use it for anything else).
+        </li>
+    </ul>
+
+    <h2>Additional Information</h2>
+    <ul>
+        <li>Implement the Game.java class. Notice this class provides
+            basic functionality for manipulating cells in a board.
+        </li>
+        <li>To test your Game.java class add ClearCellGame methods (even
+            if they are not doing anything) that allows you to run
+            public tests.
+        </li>
+        <li>
+            The first public test is just displaying the board. You can
+            see the board in the file pubEmptyBoard.txt. This test
+            relies on the the private method getBoardStr (part of the public
+            tests). Look at that code; you will see it makes use of Game
+            methods.
+        </li>
+
+        <li>
+            Once you have the Game.java class tested, move on to ClearCellGame.
+        </li>
+
+        <li>
+            You will notice that the ClearCellGame has a constructor that takes
+            a Random object. The only thing you need to do is to define
+            an instance variable (e.g., random) that keeps track of the object
+            passed in the constructor parameter. This is the object that
+            is required by the getNonEmptyRandomBoardCell we provided.
+        </li>
+
+        <li>
+            The nextAnimationStep method functionality is basically:
+            <pre>            if (!isGameOver()) {
+                /* insert random row */
+            }
+            </pre>
+        </li>
+
+        <li>
+            When is the game over? When the last board row is different from empty row.
+        </li>
+
+        <li>
+            To handle the code complexity, you should define auxiliary methods.  For example, a
+            method that collapses a board can be helpful as you can test it independently.
+        </li>
+
+        <li>
+            For this project when you collapse a board or perform any board operation,
+            you can create a new array that represents the new board, instead of manipulating
+            the original board / array.
+        </li>
+    </ul>
+
+    <h2>For Fun</h2>
+    <p>
+        The following is not a project requirement; it is just for those that would like
+        to have additional practice.
+    </p>
+
+    <p>
+        Add a new strategy (use number 2 for the ClearCellGame constructor) that clears
+        cells in two steps. When a cell is clicked the first time, it will be cleared if it
+        is green. If the cell has a color other than green, the first click will set it
+        to green, and a second click will clear it.
+    </p>
+
+    <h2>Suggestions on How To Start the Project</h2>
+    <ul>
+        <li>Study the public tests before starting implementing your project.</li>
+        <li>Notice that you can implement this project without using the GUI at
+            all.
+        </li>
+    </ul>
+</div>
+<!-- Footer Section -->
+
+<div id="footer">
+    <h2>Submission</h2>
+
+    <p>
+        Submit your project using the "Submit Project" option (available by right clicking on the project folder).
+    </p>
+
+    <h2>Academic Integrity</h2>
+
+    <p>Please make sure you read the academic integrity section of the syllabus
+        so you understand what is permissible in our programming projects. We want to
+        remind you that we check your project against other students' projects and
+        any case of academic dishonesty will be referred to the <a href="https://www.studentconduct.umd.edu/">Office of Student Conduct</a>. </p>
+</div>
+
+<div class="container-fluid">
+    <a href="https://www.umd.edu/web-accessibility/">Web Accessibility</a>
+</div>
+
+
+
+</body></html>

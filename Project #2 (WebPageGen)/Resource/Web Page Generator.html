@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.cs.umd.edu/class/fall2019/cmsc132/projects/WebPageGen/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Web Page Generator</title>
+    <link rel="stylesheet" href="./Web Page Generator_files/WebPageGen.css">
+</head>
+
+<body>
+
+<div id="contents">
+
+    <div id="header">
+        <p><a href="http://www.cs.umd.edu/"><img id="UMDGlobe" src="./Web Page Generator_files/globe.png" width="73" height="73" alt="UMD Globe"></a>
+            <a href="http://www.cs.umd.edu/">Department of Computer Science</a><br>
+            <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/">CMSC132: Fall 2019</a><br>
+            <strong>Project:</strong> Web Page Generator<br>
+            <strong>Due Date:</strong> Wednesday Sep 18, 11:30 pm<br>
+        </p>
+    </div>
+
+    <h2>Overview</h2>
+    <p> For this project you will develop a set of classes that will
+        support the generation of HTML for web pages.<br><br>
+    </p>
+
+    <p>
+        Remember not to post your project online where others can access it as
+        this can lead to academic integrity violations. Also, remember you cannot
+        post any code in Piazza.
+    </p>
+    <p><strong>
+        For this project you are allowed to discuss the project with others,
+        but you may not exchange any code. Every student must implement their
+        own code.
+    </strong>
+    </p>
+
+    <h2>Objectives</h2>
+    <p>This project will allow you to practice inheritance and
+        other fundamental Java Constructs.
+    </p>
+
+    <h2>Grading</h2>
+    <ul>
+        <li>(36%) Public Tests</li>
+        <li>(54%) Release Tests</li>
+        <li>(10%) Style</li>
+    </ul>
+
+    <h2>Good Faith Attempt</h2>
+    <p>
+        Remember you need to satisfy a good faith attempt for every project.
+        The good faith attempt for this project and its deadline
+        will be posted later on.
+    </p>
+
+    <h2>Code Distribution</h2>
+
+    <p>The project's code distribution is available at
+        <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/zipFiles/WebPageGen.zip">WebPageGen.zip</a>
+        The code distribution provides you with the following:
+    </p>
+    <ul>
+        <li>A package named <b>model</b> - In this package you will implement
+            all the classes for the web page generator. An Utilities.java class has
+            been provided with a method to write to files. Feel free to add to the Utilities.java
+            class any other methods you understand you need. Notice you will not lose
+            any credit if you decide not to add any methods.
+        </li>
+
+        <li>A package named <b>tests</b> - Includes the public tests (<b>PublicTests.java</b>) and
+            a shell for a class where you will write your tests (StudentTests.java). The expected
+            results for public tests can be found in the with a "pub" prefix.&nbsp; Remember that
+            you can see the results of your tests by adding a System.out.println statement to the
+            public tests. To determine why a test is failing, compare the test's output with the
+            corresponding .txt file.
+        </li>
+    </ul>
+
+    <h2>Specifications</h2>
+    <ul>
+        <li>
+            For this project you will implement classes that allow us to generate HTML5.
+            A description of the classes you need to implement can be found at
+            <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/WebPageGen/doc/index.html">javadoc</a>.
+        </li>
+
+        <li>
+            In a web page we can have text (represented by the TextElement class) or tags
+            (represented by the TagElement class). Both classes implement the Element interface
+            that defines a method (genHTML) that generates the expected HTML for the element.
+            Tag element classes extend the TagElement class.
+        </li>
+        <li>
+            The WebPage class represents a web page and will put together all the different
+            elements. Notice this class implements the Comparable interface.
+            For simplicity, the tags associated with doctype, html, head, meta,
+            and body will not be generated using classes. One of the method asks to
+            create a file with HTML code. We have provide a method that allows you to
+            create such a file (see Utilities class).
+        </li>
+        <li>
+            Try to generate HTML that has reasonable indentation, but keep in mind
+            the submit server ignores it.
+        </li>
+        <li>
+            Do not use the System.lineSeparator() method. It creates a newline that will
+            not allow you to pass tests.
+        </li>
+        <li>
+            For the &lt;a&gt; tag any attributes go after the href attribute. If you add
+            them before you will not pass tests.
+        </li>
+        <li>
+            HTML information can be found at <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/WebPageGen/IntroHTML.pdf">IntroHTML.pdf</a> and
+            <a href="http://www.cs.umd.edu/class/fall2019/cmsc132/projects/WebPageGen/IntroHTMLCode.zip">IntroHTMLCode.zip</a>.
+        </li>
+        <li>
+            The best way to understand what you need to implement is to study the public
+            tests.
+        </li>
+    </ul>
+    <h3>Classes</h3>
+
+    <h2>Requirements</h2>
+
+    <ul>
+
+        <li>Do not wait until the day the project is due to submit your project for the
+            first time.
+        </li>
+
+        <li>Verify that your project passes the submit server tests
+            (<a href="https://submit.cs.umd.edu/fall2019">https://submit.cs.umd.edu/</a>)
+        </li>
+
+
+        <li>Keep in mind that for this project you have three release tokens in the
+            submit server that regenerate every 12 hours. Information about the test
+            types for CS course can be found at <a href="http://www.cs.umd.edu/~nelson/classes/utilities/testtypes/">Test Types</a>.
+        </li>
+
+        <li><strong>IMPORTANT</strong> → If you have a problem with your code
+            and need assistance during office hours, you need to have a student
+            test(s) that illustrates the problem you are experiencing.
+        </li>
+
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/studenttests/">Student Tests</a>
+            for information regarding the implementation of student tests for this
+            project.
+        </li>
+
+        <li>See <a href="http://www.cs.umd.edu/~nelson/classes/resources/javastyleguide/">Style Guidelines</a> for
+            information
+            regarding style.
+        </li>
+
+        <li>We cannot provide any information regarding release nor secret tests.
+            Once your project has been graded, you can see a TA if you would
+            like to find out why you failed a release or secret test.
+        </li>
+    </ul>
+
+    <!--
+        <h2>Honor's Section Requirement</h2>
+        <p>
+            The following requirement is for students enrolled in the honor's section.
+        </p>
+        <p>
+            Define a program that using the classes above creates a file with the web page
+            for a user. The program will ask the user for the following information:
+        </p>
+        <ul>
+            <li>Name</li>
+            <li>Link to profile picture (this picture will be displayed as an image on the page).</li>
+            <li>Some information about the person (this information will be placed in a paragraph).</li>
+            <li>Links to three favorite web sites (they will appear in an HTML list).</li>
+            <li>Any other information you would like to add (surprise us!).</li>
+        </ul>
+    -->
+</div>
+<!-- Footer Section -->
+
+<div id="footer">
+    <h2>Submission</h2>
+
+    <p>
+        Submit your project using the "Submit Project" option (available by right clicking on the project folder).
+    </p>
+
+    <h2>Academic Integrity</h2>
+
+    <p>Please make sure you read the academic integrity section of the syllabus
+        so you understand what is permissible in our programming projects. We want to
+        remind you that we check your project against other students' projects and
+        any case of academic dishonesty will be referred to the <a href="https://www.studentconduct.umd.edu/">Office of Student Conduct</a>. </p>
+</div>
+
+
+</body></html>
